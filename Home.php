@@ -121,7 +121,6 @@ require("Header.php");
             His[num] = move;
             num++;
             $("#BoardHistory").val(His)
-
             checkWin();
         }
 
@@ -139,13 +138,10 @@ require("Header.php");
                         $("#BoardHistory").val(His)
                         checkWin();
                     }
-                    if (check == 0) {
+                    if (check == 0)
                         computerMove();
-                    }
                 }
             }
-            // console.log(id)
-
         });
     });
 </script>
