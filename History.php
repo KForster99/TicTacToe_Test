@@ -11,17 +11,12 @@ $sql = "SELECT * FROM `record` WHERE Game='$IDGame'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
-
-// print_r($row);
 $BOARD = $row["Board"];
 $STATUS = $row["Status"];
-// echo ($BOARD) . "<br/>";
-// echo ($STATUS);
 
-// echo print_r($row);
 preg_match_all('/\d+/', $row["Board"], $arr);
 $arr = $arr[0];
-// print_r($arr);
+
 require("DBclose.php");
 ?>
 
@@ -56,31 +51,20 @@ require("DBclose.php");
 
         let result_history = "<?php echo $BOARD; ?>"
 
-        console.log(result_history)
-
         result_history = result_history.split(",").filter((x) => x !== null && x !== '');
-        console.log(result_history)
 
         $.each(result_history, function(index, value) {
-            console.log("index : " + index)
-            console.log("value : " + value)
             if (index == 0) {
-                console.log("----")
                 $(`#template-board[data-id='${index}'] > .board > #${value}.cell`).html("X")
-                // $(`#template-board[data-id='0'] > .board > #0.cell`).html("X")
             } else {
-
                 $_TEMPLATE = $("body").find(`#template-board[data-id=${index-1}]`).clone(true)
-
-                console.log($_TEMPLATE)
-
                 $($_TEMPLATE).attr("data-id", index)
 
-                if (index % 2 === 0) {
+                if (index % 2 === 0)
                     $($_TEMPLATE).find(`.board > #${value}.cell`).html("X")
-                } else {
+                else 
                     $($_TEMPLATE).find(`.board > #${value}.cell`).html("O")
-                }
+                
                 $($_TEMPLATE).removeClass("d-none")
                 $("body").append($_TEMPLATE)
             }

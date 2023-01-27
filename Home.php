@@ -30,9 +30,6 @@ require("Header.php");
     </div>
 
     <?php
-
-    $HISTORY = "";
-    // echo $NEW_GAME;
     if (isset($_POST['NewGame'])) {
         $BoardHistory = $_POST['BoardHistory'];
         $RoundStatus = $_POST['RoundStatus'];
@@ -130,7 +127,6 @@ require("Header.php");
             if ($(this).is(":empty")) {
                 if (check == 0) {
                     if (board[id] === "") {
-
                         board[id] = player;
                         $(this).text(player);
                         His[num] = id;
